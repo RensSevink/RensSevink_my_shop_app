@@ -1,0 +1,53 @@
+@startuml 
+
+package "Products overview" {
+    class product_overview
+    class product_overview_state
+}
+product_item *-- product_overview
+
+class product{
+  -id : int
+  -title : string
+  -description : string
+  -price : double
+  -imageUrl : string
+  -isFavorite : boolean
+
+  +Product(id: int, title: string,description: string, price: double,
+  image: string, isFavorite: boolean) : void
+}
+
+class product_item{
+  -id : int
+  -title : string
+  -description : string
+  -imageUrl : string
+
+  +ProductItem(id: int, title: string,description: string,
+  image: string) : void
+  +build(context: BuildContext): GridTile
+}
+
+class product_overview{
+  +createState(): product_overview_state
+}
+
+class product_overview_state{
+  +LoadedProducts : List<product>
+  +product_overview(loadedProducts:: List<product>): void
+}
+
+class product_detail{
+  -title: string
+  -description: string
+
+  +ProductDetail(title: string, description: string) : void
+  +build(context: BuildContext): Scaffold
+}
+
+class main_dart{
+  +build(context: BuildContext): MaterialApp
+}
+
+@enduml

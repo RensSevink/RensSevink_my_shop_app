@@ -41,8 +41,14 @@ class ProductsProvider with ChangeNotifier {
     return _items;
   }
 
-  // void addProduct(value) {
-  //   _items.add(value);
-  //   notifyListeners();
-  // }
+  void addProduct(value) {
+    // _items.add(value);
+    notifyListeners();
+  }
+
+  Product findById(String id) {
+    return items.firstWhere(
+      (product) => product.id == id,
+    );
+  }
 }

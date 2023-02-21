@@ -49,14 +49,8 @@ class ProductItem extends StatelessWidget {
       ),
       child: GestureDetector(
         onTap: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => ProductDetailPage(
-                title: title,
-                description: description,
-              ),
-            ),
-          );
+          Navigator.of(context)
+              .pushNamed(ProductDetailPage.routeName, arguments: id);
         },
         child: Tooltip(
           message: description,
